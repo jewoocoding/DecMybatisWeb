@@ -1,0 +1,41 @@
+#footer {
+    border-top : 3px solid #222;
+    --flex-direction: column;
+}
+
+/*
+    bottomMenu flex 사용
+*/
+#bottomMenu ul{
+    padding-left: 80px;
+    list-style: none;
+    display: flex;
+}
+
+#bottomMenu li{
+    padding: 5px 25px;
+    border-right: 1px solid #ddd;
+}
+
+/*
+    bottomMenu float left 사용
+*/
+/* #bottomMenu li {
+    list-style: none;
+    --padding-left: 30px;
+}
+
+#bottomMenu li>a{
+    color: 	#808080;
+    padding: 5px 25px;
+    border-right: 1px solid #ddd;
+} */
+
+#bottomMenu a, #bottomMenu a:visited{
+    font-size: 15px;
+    color: #666;
+}
+
+#bottomMenu li:last-child{
+    border-right: #fff;
+}
