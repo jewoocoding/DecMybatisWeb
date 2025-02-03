@@ -12,49 +12,36 @@ import com.dmybais.member.model.service.MemberService;
 import com.dmybais.member.model.vo.Member;
 
 /**
- * Servlet implementation class SignupServlet
+ * Servlet implementation class UpdateServlet
  */
-@WebServlet("/member/signup")
-public class SignupServlet extends HttpServlet {
+@WebServlet("/member/update")
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignupServlet() {
+    public UpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/member/signup.jsp").forward(request, response);
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberId = request.getParameter("memberId");
-		String memberPwd = request.getParameter("memberPwd");
-		String memberName = request.getParameter("memberName");
-		String gender = request.getParameter("gender");
-		int age = Integer.parseInt(request.getParameter("age")); 
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		String hobby = request.getParameter("hobby");
-		Member member = new Member(memberId, memberPwd, memberName, gender, age, email, phone, address, hobby);
-		
-		int result = new MemberService().insertMember(member);
+		Member member = new Member(memberId, email, phone, address, hobby);
+		int result = new MemberService().updateMember(member);
 		if(result > 0) {
-			response.sendRedirect("/member/login");
+			response.sendRedirect("/member/mypage");
 		}else {
 			NavigationUtil.navigateToError("500", "서비스처리가 완료되지 않았습니다.", request, response);
 		}
-		
 	}
 
 }

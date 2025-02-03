@@ -14,16 +14,16 @@ import com.dmybais.member.model.service.MemberService;
 import com.dmybais.member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class DeleteServlet
  */
-@WebServlet("/member/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/member/delete")
+public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public DeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +32,17 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memberId = request.getParameter("memberId");
-		String memberPw = request.getParameter("memberPw");
-		
-		Member member = new Member(memberId, memberPw);
-		Member result = new MemberService().selectOneByLogin(member);
-		if(result != null) {
-			// 세션에 정보를 저장
-			// 어느 페이지에서든지 로그인 인증정보 확인가능
-			HttpSession session = request.getSession();
-			session.setAttribute("result", result);
-			response.sendRedirect("/");
+		HttpSession session = request.getSession();
+		Member searchOne = (Member)session.getAttribute("result");
+		if(searchOne != null) {
+			String memberId = searchOne.getMemberId();
+			int result = new MemberService().deleteMember(memberId);
+			if(result > 0) {
+				session.invalidate();
+				response.sendRedirect("/member/logout");
+			}else {
+				NavigationUtil.navigateToError("500", "서비스처리가 완료되지 않았습니다.", request, response);
+			}
 		}else {
 			NavigationUtil.navigateToError("404", "데이터가 존재하지 않습니다.", request, response);
 		}

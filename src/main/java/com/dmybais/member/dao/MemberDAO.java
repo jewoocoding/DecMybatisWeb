@@ -20,6 +20,18 @@ public class MemberDAO {
 		int result = conn.insert("MemberMapper.insertMember",member);
 		return result;
 	}
+
+	public Member selectOneById(SqlSession conn, String memberId) {
+		return conn.selectOne("MemberMapper.selectOneById",memberId);
+	}
+
+	public int updateMember(SqlSession conn, Member member) {
+		return conn.update("MemberMapper.updateMember",member);
+	}
+
+	public int deleteMember(SqlSession conn, String memberId) {
+		return conn.delete("MemberMapper.deleteMember",memberId);
+	}
 	
 	
 

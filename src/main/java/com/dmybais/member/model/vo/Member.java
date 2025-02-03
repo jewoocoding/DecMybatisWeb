@@ -29,8 +29,6 @@ public class Member {
 		this.email = email;
 	}
 	
-	
-
 	public Member(String memberId, String memberPwd, String memberName, String gender, int age, String email,
 			String phone, String address, String hobby) {
 		super();
@@ -39,6 +37,15 @@ public class Member {
 		this.memberName = memberName;
 		this.gender = gender;
 		this.age = age;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.hobby = hobby;
+	}
+	
+	public Member(String memberId, String email, String phone, String address, String hobby) {
+		super();
+		this.memberId = memberId;
 		this.email = email;
 		this.phone = phone;
 		this.address = address;

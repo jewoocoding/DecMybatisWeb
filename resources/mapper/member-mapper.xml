@@ -19,10 +19,20 @@
 	<select id="selectOneByLogin" resultMap="memberResultMap">
 		SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = #{memberId} AND MEMBER_PWD = #{memberPwd}
 	</select>
-	
+	<select id="selectOneById" resultMap="memberResultMap">
+		SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = #{memberId}
+	</select>
 	<insert id="insertMember" parameterType="com.dmybais.member.model.vo.Member"> 
 	<!-- parameterType은 생략가능 -->
 		INSERT INTO MEMBER_TBL VALUES(#{memberId}, #{memberPwd},#{memberName},#{gender}
 		,#{age},#{email},#{phone},#{address},#{hobby},DEFAULT)
 	</insert>
+	<update id="updateMember">
+		UPDATE MEMBER_TBL SET MEMBER_ID = #{memberId}, EMAIL = #{email}, 
+		PHONE = #{phone}, ADDRESS = #{address}, HOBBY = #{hobby} 
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+	<delete id="deleteMember">
+		DELETE FROM MEMBER_TBL WHERE MEMBER_ID = #{memberId}
+	</delete>
 </mapper>
