@@ -1,4 +1,4 @@
-package com.dmybais.member.dao;
+package com.dmybais.member.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

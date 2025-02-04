@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-import com.dmybais.member.common.NavigationUtil;
+import com.dmybais.common.NavigationUtil;
 import com.dmybais.member.model.service.MemberService;
 import com.dmybais.member.model.vo.Member;
 
@@ -33,7 +33,11 @@ public class MyPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// HttpSession 객체를 가져옴
 		HttpSession session = request.getSession();
+		// 세션에 저장된 정보를 가져와야함. getAttribute() 메소드 이용
+		// getAttribute() 메소드는 리턴형이 Object, 그런데 필요한 것은 Member이므로
+		// (Member)로 형변환해줌.
 		Member searchOne = (Member)session.getAttribute("result");
 		if(searchOne != null) {
 			String memberId = searchOne.getMemberId();

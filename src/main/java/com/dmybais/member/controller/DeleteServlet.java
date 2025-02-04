@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-import com.dmybais.member.common.NavigationUtil;
+import com.dmybais.common.NavigationUtil;
 import com.dmybais.member.model.service.MemberService;
 import com.dmybais.member.model.vo.Member;
 

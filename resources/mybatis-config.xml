@@ -2,8 +2,15 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
-
 <configuration>
+	<settings>
+		<!-- 널 값이 발생할 경우 빈칸이 아닌 NULL로 인식해라 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<!-- 별칭 붙여서 짧게 쓰기 -->
+		<typeAlias type="com.dmybais.notice.model.vo.Notice" alias="Notice"/>
+	</typeAliases>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"></transactionManager>
@@ -17,6 +24,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="mapper/member-mapper.xml"/>
+		<mapper resource="mapper/notice-mapper.xml"/>
 	</mappers>
 </configuration>
   

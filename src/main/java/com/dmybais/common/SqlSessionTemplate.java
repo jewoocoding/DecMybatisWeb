@@ -1,4 +1,4 @@
-package com.dmybais.member.common;
+package com.dmybais.common;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,7 +23,6 @@ public class SqlSessionTemplate {
 			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 			SqlSessionFactory factory = builder.build(is);
 			session = factory.openSession(true);
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

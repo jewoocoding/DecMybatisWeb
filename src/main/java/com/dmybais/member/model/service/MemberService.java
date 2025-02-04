@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.dmybais.member.common.JDBCTemplate;
-import com.dmybais.member.common.SqlSessionTemplate;
-import com.dmybais.member.dao.MemberDAO;
+import com.dmybais.common.JDBCTemplate;
+import com.dmybais.common.SqlSessionTemplate;
+import com.dmybais.member.model.dao.MemberDAO;
 import com.dmybais.member.model.vo.Member;
 
 public class MemberService {

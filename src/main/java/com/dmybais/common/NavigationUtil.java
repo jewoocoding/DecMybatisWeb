@@ -1,4 +1,4 @@
-package com.dmybais.member.common;
+package com.dmybais.common;
 
 import java.io.IOException;
 
