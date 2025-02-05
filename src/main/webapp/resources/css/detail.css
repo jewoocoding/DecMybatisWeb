@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+main {
+	width: 1000px;
+	margin: 50px auto;
+}
+
+.notice-detail {
+	border-top: 2px solid #045;
+	border-bottom: 2px solid #045;
+	background-color: #fff;
+}
+
+.notice-header {
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.notice-title {
+	font-size: 24px;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.notice-info{
+	display: flex;
+	color: #666;
+	font-size: 14px;
+	gap: 20px;
+}
+
+.notice-content {
+	padding: 30px 20px;
+	min-height: 300px;
+	line-height: 1.6;
+	/* 
+		연속된 공백을 보존함, 개행문자를 보존함
+		필요할 때 자동으로 줄 바꿈.
+	 */
+	white-space: pre-wrap;
+}
+
+.notice-file {
+	padding: 20px;
+	background-color: #f8f8f8;
+	border-top: 1px solid #ddd;
+}
+
+.notice-file a {
+	color: #666;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+}
+
+.notice-file a:hover {
+	color: #045;
+	text-decoration: underline;
+}
+
+.notice-file h4 {
+	color: #045;
+	margin-bottom: 10px;
+}
+
+.button-group {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn {
+	display: inline-block;
+	padding: 8px 20px;
+	border: 1px solid #045;
+	background-color: #fff;
+	color: #045;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #045;
+	color: #fff;
+}
+
+.btn-admin {
+	border-color: #e74c3c;
+	color: #e74c3c;
+}
+
+.btn-admin:hover {
+	background-color: #e74c3c;
+	color: #fff;
+}
+
+

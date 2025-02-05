@@ -26,4 +26,16 @@ public class NoticeService {
 		return nDao.selectNoticeList(conn);
 	}
 
+	public Notice selectOneByNo(int noticeNo) {
+		return nDao.selectOneByNo(conn, noticeNo);
+	}
+
+	public int deleteOneByNo(int noticeNo) {
+		return nDao.deleteOneByNo(conn, noticeNo);
+	}
+
+	public int updateNotice(Notice notice) {
+		return nDao.updateNotice(conn, notice);
+	}
+
 }

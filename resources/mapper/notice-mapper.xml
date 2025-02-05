@@ -22,4 +22,15 @@
 	<select id="selectNoticeList" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL ORDER BY 1 DESC
 	</select>
+	<select id="selectOneById" resultMap="noticeResultMap">
+		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	<delete id="deleteOneByNo">
+		DELETE FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
+	</delete>
+	<update id="updateNotice">
+		UPDATE NOTICE_TBL SET NOTICE_SUBJECT = #{noticeSubject}
+		, NOTICE_CONTENT = #{noticeContent}
+		WHERE NOTICE_NO = #{noticeNo}
+	</update>
 </mapper>

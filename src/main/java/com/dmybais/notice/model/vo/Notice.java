@@ -21,6 +21,21 @@ public class Notice {
 		this.noticeContent = noticeContent;
 		this.noticeWriter = noticeWriter;
 	}
+	
+	public Notice(int noticeNo, String noticeSubject, String noticeContent) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeSubject = noticeSubject;
+		this.noticeContent = noticeContent;
+	}
+
+	public Notice(int noticeNo, String noticeSubject, String noticeContent, String attachmentName) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeSubject = noticeSubject;
+		this.noticeContent = noticeContent;
+		this.attachmentName = attachmentName;
+	}
 
 	public int getNoticeNo() {
 		return noticeNo;
