@@ -30,9 +30,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${nList }" var="n" >
+							<!-- i.count or i.index -->
+							<!-- 
+								varStatus는 반복과정에서 반복 상태 정보를 담을 수 있게하는 속성
+								* 1 ~ 2 결과값이 정수
+								1. index : 현재 반복의 0부터 시작하는 인덱스 번호
+								2. count : 반복된 항목의 수, 1부터 시작하는 번호
+								* 3 ~ 6 결과값이 true, false
+								3. first : 첫번째면 true, 아니면 false
+								4. last : 마지막이면 true, 아니면 false
+								5. even : 짝수번째면 true, 아니면 false
+								6. odd : 홀수번째면 true, 아니면 false
+							 -->
+							<c:forEach items="${nList }" var="n" varStatus="i">
 								<tr>
-									<td class="num">${n.noticeNo }</td>
+									<td class="num">${nList.size() - i.index }</td> 
 									<td class="title"><a href="/notice/detail?noticeNo=${n.noticeNo }">${n.noticeSubject }</a></td>
 									<td class="writer">${n.noticeWriter }</td>
 									<td class="date">${n.noticeDate }</td>
@@ -52,13 +64,15 @@
 						</tbody>
 					</table>
 					<div class="pagination">
-						<a href="#" class="prev">&lt;</a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next">&gt;</a>
+						<c:if test="${startNavi ne 1 }">					
+							<a href="/notice/list?currentPage=${startNavi-1 }" class="prev">&lt;</a>
+						</c:if>
+						<c:forEach begin="${startNavi }" end="${endNavi }" var="i">
+							<a href="/notice/list?currentPage=${i }">${i }</a>						
+						</c:forEach>			
+						<c:if test="${endNavi ne maxPage }">					
+							<a href="/notice/list?currentPage=${endNavi+1 }" class="next">&gt;</a>
+						</c:if>	
 					</div>
 				</section>
 			</main>

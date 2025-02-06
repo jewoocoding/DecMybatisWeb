@@ -31,10 +31,34 @@ public class ListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// endNavi의 최대값이 전체게시물에 따라서 달라질 수 있음
+		// ex) 전체 게시물의 개수가 232개이고 1페이지당 10개씩 보여준다고 하면
+		// endNavi 최대값은 24가 됨 -> 이것을 식으로 써서 전체 게시물이 변경될 때마다
+		// 달라지도록 해야함.
+		int currentPage = request.getParameter("currentPage") != null 
+				?  Integer.parseInt(request.getParameter("currentPage")) : 1;
+		NoticeService nService = new NoticeService();
+		List<Notice> nList = nService.selectNoticeList(currentPage);
 		
-		List<Notice> nList = new NoticeService().selectNoticeList();
+		
 		if(!nList.isEmpty()) {
+			int totalCount = nService.getNoticeCount();
+			int boardLimit = 10;
+			int maxPage = totalCount % boardLimit == 0 
+					? totalCount/boardLimit : totalCount/boardLimit + 1;
+			maxPage = (int)Math.ceil((double)totalCount/boardLimit);
+			int naviCountPerPage = 5;		
+			// currentPage: 1 ~ 5, startNavi: 1, 1endNavi: 5
+			// currentPage: 6 ~ 10, startNavi: 6, endNavi: 10
+			int startNavi = ((currentPage-1)/naviCountPerPage)*naviCountPerPage + 1;
+			int endNavi = startNavi+naviCountPerPage-1;
+			if(endNavi > maxPage) {
+				endNavi = maxPage;
+			}
+			request.setAttribute("maxPage",maxPage);
 			request.setAttribute("nList", nList);
+			request.setAttribute("startNavi", startNavi);
+			request.setAttribute("endNavi", endNavi);
 			request.getRequestDispatcher("/WEB-INF/views/notice/noticelist.jsp")
 			.forward(request, response);			
 		}else {

@@ -33,4 +33,7 @@
 		, NOTICE_CONTENT = #{noticeContent}
 		WHERE NOTICE_NO = #{noticeNo}
 	</update>
+	<select id="getNoticeCount" resultType="_int">
+		SELECT COUNT(*) FROM NOTICE_TBL
+	</select>
 </mapper>

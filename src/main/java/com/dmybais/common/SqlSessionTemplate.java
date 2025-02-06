@@ -26,8 +26,6 @@ public class SqlSessionTemplate {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 		return session;
 	}
 }

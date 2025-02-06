@@ -10,7 +10,7 @@
                 <li><a href="#">단체여행</a></li>
                 <li><a href="#">맞춤여행</a></li>
                 <li><a href="#">갤러리</a></li>
-                <li><a href="/notice/list">공지사항</a></li>
+                <li><a href="/notice/list?currentPage=1">공지사항</a></li>
                 <!-- 만약에 memberId가 없으면 로그인 버튼 보이고 -->
              <c:if test = "${sessionScope.result.memberId == null }" >
              	<li><a href="/member/login">로그인</a></li>

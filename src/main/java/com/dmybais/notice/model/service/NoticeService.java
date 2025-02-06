@@ -22,8 +22,8 @@ public class NoticeService {
 		return nDao.insertNotice(conn, notice);
 	}
 
-	public List<Notice> selectNoticeList() {
-		return nDao.selectNoticeList(conn);
+	public List<Notice> selectNoticeList(int currentPage) {
+		return nDao.selectNoticeList(conn, currentPage);
 	}
 
 	public Notice selectOneByNo(int noticeNo) {
@@ -36,6 +36,10 @@ public class NoticeService {
 
 	public int updateNotice(Notice notice) {
 		return nDao.updateNotice(conn, notice);
+	}
+
+	public int getNoticeCount() {
+		return nDao.getNoticeCount(conn);
 	}
 
 }
